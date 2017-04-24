@@ -11,9 +11,9 @@
 				$(function() {
 					// 使用 Mock
 					var data = Mock.mock('http:www.chenhao.com/list',{
-						'list|1-10': [{
+						'list|1-6': [{
 							'id|+1': 1,
-							
+							'name' :'@name'
 						}]
 					});
 					
@@ -27,7 +27,10 @@
 							console.log(result.list)
 							
 							for (var item of result.list) {
-								$('#list').append('<li>'+ item.id +'</li>')
+								$('#list').append('<li>'+
+								'<p>序号：'+ item.id +'</p>'+
+								'<p>名称：'+ item.name +'</p>'+
+							'</li>')
 							}
 						}
 					})
