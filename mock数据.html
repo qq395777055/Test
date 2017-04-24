@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.0.js"></script>
+		<script src="http://mockjs.com/dist/mock.js"></script>
+		<script type="text/javascript">
+			(function($) {
+				$(function() {
+					// 使用 Mock
+					var data = Mock.mock('http:www.chenhao.com/list',{
+						'list|1-10': [{
+							'id|+1': 1,
+							
+						}]
+					});
+					
+					
+					//取Mock数据
+					$.ajax({
+						type:"GET",
+						url:"http:www.chenhao.com/list",						
+						success(data){
+							var result = JSON.parse(data)
+							console.log(result.list)
+							
+							for (var item of result.list) {
+								$('#list').append('<li>'+ item.id +'</li>')
+							}
+						}
+					})
+				})
+			})(jQuery)
+		</script>
+	</head>
+
+	<body>
+		<ul id="list">
+			
+		</ul>
+	</body>
+
+</html>
